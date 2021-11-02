@@ -15,11 +15,18 @@ ActiveRecord::Schema.define(version: 2021_04_17_175751) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "projects", force: :cascade do |t|
-    t.string "name"
-    t.integer "team_id"
+  create_table "periods", force: :cascade do |t|
+    t.datetime "start"
+    t.datetime "end"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "periods_timers", id: false, force: :cascade do |t|
+    t.bigint "timer_id", null: false
+    t.bigint "period_id", null: false
+    t.index ["period_id"], name: "index_periods_timers_on_period_id"
+    t.index ["timer_id"], name: "index_periods_timers_on_timer_id"
   end
 
   create_table "services", force: :cascade do |t|
@@ -33,7 +40,6 @@ ActiveRecord::Schema.define(version: 2021_04_17_175751) do
     t.string "name"
     t.string "url"
     t.integer "service_id"
-    t.integer "project_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -45,23 +51,10 @@ ActiveRecord::Schema.define(version: 2021_04_17_175751) do
     t.index ["user_id"], name: "index_tasks_users_on_user_id"
   end
 
-  create_table "teams", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "time_periods", force: :cascade do |t|
-    t.datetime "start"
-    t.datetime "end"
-    t.integer "timer_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "timers", force: :cascade do |t|
     t.string "description"
     t.integer "task_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

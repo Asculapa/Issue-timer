@@ -12,7 +12,6 @@ class ApplicationController < ActionController::API
     request.headers['Authorization']
   end
 
-
   def decode_token
     if auth_header
       # header: { 'Authorization': 'Bearer <token>' }

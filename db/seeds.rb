@@ -6,17 +6,17 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-admin = User.create(username: 'admin', email: 'nadtochiy1915@gmail.com', password: 'Welcum to issue-timer')
-m0ksem = User.create(username: 'm0ksem', email: 'm0ksem@gmail.com', password: 'Welcum to m0ksem issue-timer')
+admin = User.create!(username: 'admin', email: 'nadtochiy1915@gmail.com', password: 'Welcum to issue-timer')
+m0ksem = User.create!(username: 'm0ksem', email: 'm0ksem@gmail.com', password: 'Welcum to m0ksem issue-timer')
 
-team = Team.create(name: 'BIBIP')
-project = Project.create(name: 'BIBIP', team_id: team.id)
-service = Service.create(name: 'Github', hostname: 'github.com')
+service = Service.create!(name: 'Github', hostname: 'github.com')
 
 
-task = Task.create(name: 'Create database', url: 'https://github.com/m0ksem/issue-timer/issues/5', service_id: service.id, project_id: project.id )
-timer = Timer.create(description: 'Cool timer', task_id: task.id)
-timer_period = TimePeriod.create(start: Time.now - 1.hour, end: Time.now, timer_id: timer.id)
+task = Task.create!(name: 'Create database', url: 'https://github.com/m0ksem/issue-timer/issues/5', service_id: service.id)
+timer = Timer.create!(description: 'Cool timer', task_id: task.id, user_id: admin.id)
+period = Period.create!(start: Time.now - 1.hour, end: Time.now)
+
+timer.periods << period
 
 admin.tasks << task
 m0ksem.tasks << task

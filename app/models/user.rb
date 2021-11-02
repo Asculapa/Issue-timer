@@ -4,4 +4,10 @@ class User < ApplicationRecord
   validates_uniqueness_of :username, :email
 
   has_and_belongs_to_many :tasks
+  has_many :timers
+
+  def serializable_hash(options = {})
+    options[:except] ||= [:password_digest]
+    super(options)
+  end
 end

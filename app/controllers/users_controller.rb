@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @user = User.create(users_params)
 
     if @user.valid?
-      token = encode_token({user_id: @user.id})
+      token = encode_token({ user_id: @user.id })
       render json: { user: @user, token: token }, status: :created
     else
       render json: { error: 'Invalid arguments' }, status: :bad_request
@@ -17,14 +17,13 @@ class UsersController < ApplicationController
   def login
     @user = User.find_by(email: users_params[:email])
 
-    if @user && @user.authenticate(users_params[:password])
+    if @user&.authenticate(users_params[:password])
       token = encode_token({ user_id: @user.id })
       render json: { user: @user, token: token }
     else
       render json: { error: 'Invalid email or password' }, status: :unauthorized
     end
   end
-
 
   def auto_login
     token = auth_header.split(' ').last
