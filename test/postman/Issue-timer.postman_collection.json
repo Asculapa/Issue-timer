@@ -1,0 +1,345 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Issue-timer",
+		"_postman_id": "bb772234-48b5-91c0-3c09-82317ee48acb",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"description": "",
+			"item": [
+				{
+					"name": "Log in",
+					"request": {
+						"url": "http://127.0.0.1:3000/v1/login",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "password",
+									"value": "superSecretPassword",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "testmail@gmail.com",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create account",
+					"request": {
+						"url": "http://127.0.0.1:3000/v1/users",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "testmail@gmail.com",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "TestUser",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "superSecretPassword",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Task",
+			"description": "",
+			"item": [
+				{
+					"name": "Show task",
+					"request": {
+						"url": "http://127.0.0.1:3000/v1/tasks/2",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozfQ.70XdidNgIAX2GxccVmVZo2vpI0WpPWulLhDFrecBuSU",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create task",
+					"request": {
+						"url": "http://127.0.0.1:3000/v1/tasks",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozfQ.70XdidNgIAX2GxccVmVZo2vpI0WpPWulLhDFrecBuSU",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"task\": {\n\t\t\"name\": \"Just test task\",\n\t\t\"url\": \"https://github.com/m0ksem/GameCheckersBot\", \n\t\t\"service_id\": 1 \n\t}\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Task update",
+					"request": {
+						"url": "http://127.0.0.1:3000/v1/tasks/2",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozfQ.70XdidNgIAX2GxccVmVZo2vpI0WpPWulLhDFrecBuSU",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"task\": {\n\t\t\"name\": \"Just test task(updated)\",\n\t\t\"url\": \"https://github.com/m0ksem/GameCheckersBot\", \n\t\t\"service_id\": 1 \n\t}\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Timer",
+			"description": "",
+			"item": [
+				{
+					"name": "Create timer",
+					"request": {
+						"url": "http://127.0.0.1:3000/v1/timers",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozfQ.70XdidNgIAX2GxccVmVZo2vpI0WpPWulLhDFrecBuSU",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"timer\": {\n\t\t\"description\": \"Test timer description\",\n        \"task_id\": 1,\n        \"user_id\": 3\n\t}\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "All user's timers",
+					"request": {
+						"url": "http://127.0.0.1:3000/v1/timers",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozfQ.70XdidNgIAX2GxccVmVZo2vpI0WpPWulLhDFrecBuSU",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Show timer",
+					"request": {
+						"url": "http://127.0.0.1:3000/v1/timers/7",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozfQ.70XdidNgIAX2GxccVmVZo2vpI0WpPWulLhDFrecBuSU",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update timer",
+					"request": {
+						"url": "http://127.0.0.1:3000/v1/timers/6",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozfQ.70XdidNgIAX2GxccVmVZo2vpI0WpPWulLhDFrecBuSU",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"timer\": {\n\t\t\"description\": \"Test timer description updated\",\n        \"task_id\": 1,\n        \"user_id\": 3\n\t}\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Periods",
+			"description": "",
+			"item": [
+				{
+					"name": "Show all periods",
+					"request": {
+						"url": "http://127.0.0.1:3000/v1/periods_timers",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozfQ.70XdidNgIAX2GxccVmVZo2vpI0WpPWulLhDFrecBuSU",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Show all periods by timer id",
+					"request": {
+						"url": {
+							"raw": "http://127.0.0.1:3000/v1/periods_timers?timer_id=7",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"periods_timers"
+							],
+							"query": [
+								{
+									"key": "timer_id",
+									"value": "7",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozfQ.70XdidNgIAX2GxccVmVZo2vpI0WpPWulLhDFrecBuSU",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create period",
+					"request": {
+						"url": "http://127.0.0.1:3000/v1/periods_timers",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozfQ.70XdidNgIAX2GxccVmVZo2vpI0WpPWulLhDFrecBuSU",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"timer_id\": 7, \n\t\"period\": {\n\t\t\"start\": \"2021-12-26T13:33:06.329Z\",\n\t\t\"end\": \"2021-12-26T14:11:54.953Z\"\n\t}\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
