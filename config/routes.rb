@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
     scope '/timer' do
       get '/', to: 'timers#index'
+      get '/:id', to: 'timers#show'
+      post '/', to: 'timers#create'
     end
   end
 end
