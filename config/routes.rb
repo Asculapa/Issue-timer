@@ -14,10 +14,11 @@ Rails.application.routes.draw do
       post '/', to: 'services#create'
     end
 
-    scope '/timer' do
+    scope '/timers' do
       get '/', to: 'timers#index'
       get '/:id', to: 'timers#show'
       post '/', to: 'timers#create'
+      put '/:id', to: 'timers#update'
     end
   end
 end
