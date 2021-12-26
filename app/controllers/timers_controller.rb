@@ -29,6 +29,18 @@ class TimersController < ApplicationController
     end
   end
 
+  def update
+    @timer = @user.timers.where(id: params[:id]).first
+
+    if @timer.nil?
+      render json: { error: 'Timer not found!' }, status: :not_found
+    elsif @timer.update(timer_params)
+      render json: @timer, status: :ok
+    else
+      render json: { error: @timer.errors.full_messages }, status: :bad_request
+    end
+  end
+
   private
 
   def timer_params
