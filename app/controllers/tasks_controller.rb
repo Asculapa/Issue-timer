@@ -41,9 +41,11 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task = @user.tasks.where(id: params[:id])
+    @task = @user.tasks.where(id: params[:id]).first
 
-    if @task.update(task_params)
+    if @task.nil?
+      render json: { error: 'Timer not found!' }, status: :not_found
+    elsif @task.update(task_params)
       render json: @task, status: :ok
     else
       render json: { error: @task.errors.full_messages }, status: :bad_request
