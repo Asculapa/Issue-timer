@@ -20,5 +20,10 @@ Rails.application.routes.draw do
       post '/', to: 'timers#create'
       put '/:id', to: 'timers#update'
     end
+
+    scope 'periods_timers' do
+      get '/', to: 'periods_timers#index'
+      post '/', to: 'periods_timers#create'
+    end
   end
 end
