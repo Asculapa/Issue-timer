@@ -1,9 +1,13 @@
 class ServicesController < ApplicationController
 
   def show
-    @service = Service.find(params[:id])
+    @service = Service.where(id: params[:id]).first
 
-    render json: @service
+    if @service
+      render json: @service
+    else
+      render status: :not_found
+    end
   end
 
   def index
