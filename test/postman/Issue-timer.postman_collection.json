@@ -340,6 +340,71 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Service",
+			"description": "",
+			"item": [
+				{
+					"name": "Show all services",
+					"request": {
+						"url": "http://127.0.0.1:3000/v1/services",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozfQ.70XdidNgIAX2GxccVmVZo2vpI0WpPWulLhDFrecBuSU",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Show service by id",
+					"request": {
+						"url": "http://127.0.0.1:3000/v1/services",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozfQ.70XdidNgIAX2GxccVmVZo2vpI0WpPWulLhDFrecBuSU",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create service ",
+					"request": {
+						"url": "http://127.0.0.1:3000/v1/services",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozfQ.70XdidNgIAX2GxccVmVZo2vpI0WpPWulLhDFrecBuSU",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"service\": {\n\t\t\"name\": \"Test service\",\n\t\t \"hostname\": \"https://test.service.com\"\n\t}\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
